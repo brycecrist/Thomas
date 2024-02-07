@@ -4,7 +4,7 @@
 #include <vector>
 
 Thomas::Thomas() {
-	std::cout << "Initializing Thomas\n";
+	std::cout << "Thomas the Game Engine\n";
 
 	rainbow = Rainbow();
 
@@ -172,7 +172,7 @@ void Thomas::update() {
 	handleUserMovementInput();
 
 	if (player.moved()) {
-		player.resetVelocity();
+		player.updatePositionRelativeToVelocity();
 	}
 }
 

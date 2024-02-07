@@ -17,6 +17,7 @@ public:
 
 	void updateXPosition();
 	void updateYPosition();
+	void updatePositionRelativeToVelocity();
 	bool moved();
 	void resetVelocity();
 };

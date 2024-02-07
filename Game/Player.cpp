@@ -20,7 +20,7 @@ Player::Player(SDL_Renderer* renderer) {
 		std::cout << SDL_GetError() << "\n";
 	}
 
-	attributes = Attributes(15, 15, 32, 32, 66, 132, 245, 100);
+	attributes = Attributes(15, 15, 64, 64, 66, 132, 245, 100);
 
 	sprite.x = attributes.xPos;
 	sprite.y = attributes.yPos;
@@ -48,4 +48,10 @@ bool Player::moved() {
 void Player::resetVelocity() {
 	attributes.xVelocity = 0;
 	attributes.yVelocity = 0;
+}
+
+void Player::updatePositionRelativeToVelocity() {
+	updateXPosition();
+	updateYPosition();
+	resetVelocity();
 }
