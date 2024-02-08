@@ -7,8 +7,26 @@ Player::Player() {
 }
 
 Player::Player(SDL_Renderer* renderer) {
+	// Texture handling
 	sprite = SDL_Rect();
+	// TODO deprecate
 	image = SDL_LoadBMP("Player2.bmp");
+
+	auto playerLeftBMP = SDL_LoadBMP("PlayerLeft");
+	auto playerRightBMP = SDL_LoadBMP("PlayerRight");
+
+	auto playerLeftTexture = SDL_CreateTextureFromSurface(renderer, playerLeftBMP);
+	auto playerRightTexture = SDL_CreateTextureFromSurface(renderer, playerRightBMP);
+
+	SDL_FreeSurface(playerLeftBMP);
+	SDL_FreeSurface(playerRightBMP);
+
+	Paint playerLeftPaint = Paint(playerLeftTexture, true, false);
+	Paint playerRightPaint = Paint(playerRightTexture, false, true);
+
+	std::vector<Paint> paintsForAnimation = { playerLeftPaint, playerRightPaint };
+
+	yubaba = Yubaba(paintsForAnimation);
 
 	if (image == NULL) {
 		std::cout << SDL_GetError() << "\n";
@@ -20,6 +38,8 @@ Player::Player(SDL_Renderer* renderer) {
 		std::cout << SDL_GetError() << "\n";
 	}
 
+
+	// Attribute handling
 	attributes = Attributes(15, 15, 64, 64, 66, 132, 245, 100);
 
 	sprite.x = attributes.xPos;

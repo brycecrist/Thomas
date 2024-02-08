@@ -1,4 +1,5 @@
 #pragma once
+#include "Yubaba.h"
 #include "Attributes.h"
 #include <SDL.h>
 
@@ -11,6 +12,7 @@ public:
 	SDL_Surface* image;
 	SDL_Texture* texture;
 	Attributes attributes;
+	Yubaba yubaba;
 
 	Player();
 	Player(SDL_Renderer* renderer);

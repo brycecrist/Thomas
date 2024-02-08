@@ -125,7 +125,7 @@ void Thomas::renderPlayer() {
 	player.updateXPosition();
 	player.updateYPosition();
 
-	SDL_RenderCopy(renderer, player.texture, NULL, &player.sprite);
+	SDL_RenderCopy(renderer, player.yubaba.currentTexture.texture, NULL, &player.sprite);
 }
 
 void Thomas::renderTile(Tile tile) {
